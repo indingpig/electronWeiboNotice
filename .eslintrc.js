@@ -54,7 +54,6 @@ module.exports = {
     "curly": 1,
     "no-console": process.env.NODE_ENV === 'production' ? 2 : 0,
     'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
-    "no-warning-comments": { "terms": ["todo", "fixme", "any other term"], "location": "anywhere" },
     'semi': ['error', 'always'],
     "space-infix-ops": 1,
     "space-unary-ops": 2,
@@ -85,6 +84,7 @@ module.exports = {
     "no-unsafe-finally": 2,
     "no-unsafe-negation": 2,
     "use-isnan": 2,
+    "eqeqeq": [2],
     "valid-typeof": 1,
     "no-shadow-restricted-names": 2,
     "no-undef": 1,
@@ -96,6 +96,7 @@ module.exports = {
     "no-useless-concat": 1,
     "no-void": 1,
     "no-with": 1,
+    "no-warning-comments": [1, { "terms": ["todo", "fixme", "any other term"], "location": "anywhere" }],
     "no-restricted-imports": ["error",
       "assert",
       "buffer", "child_process", "cluster", "crypto", "dgram", "dns", "domain", "events", "freelist", "fs", "http", "https", "module", "net", "os", "punycode", "querystring", "readline", "repl", "smalloc", "stream", "string_decoder", "sys", "timers", "tls", "tracing", "tty", "url", "util", "vm", "zlib"
