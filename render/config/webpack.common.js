@@ -7,8 +7,8 @@ module.exports = {
     filename: "[name].[hash].js",
     path: path.join(__dirname, "../dist-main")
   },
-  target: "web",
-  // target: "electron-renderer",
+  // target: "web",
+  target: "electron-renderer",
   resolve: {
     // 引入的默认后缀名,一个个找
     extensions: [".ts", ".tsx", ".js", ".jsx", ".json"],

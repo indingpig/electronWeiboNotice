@@ -9,7 +9,8 @@ export function create() {
         width: 600,
         height: 600,
         webPreferences: {               // 网页功能设置
-            nodeIntegration: true       // 是否在node工作器中启用工作集成默认false
+            nodeIntegration: true,       // 是否在node工作器中启用工作集成默认false
+            contextIsolation: false
             // enableRemoteModule: true,   // 是否启用remote模块默认false
         }
     });
