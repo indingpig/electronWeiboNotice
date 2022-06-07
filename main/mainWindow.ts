@@ -15,8 +15,8 @@ export function create() {
         }
     });
     if (isDev) {
-        win.webContents.openDevTools(); //打开控制台
-        win.loadURL('http://localhost:8080');
+      win.webContents.openDevTools(); //打开控制台
+      win.loadURL('http://localhost:8080');
     } else {
         // 线上模式, 用react打包的
         win.loadFile(resolve(__dirname, '../render/dist-main/index.html'));
