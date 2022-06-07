@@ -20,6 +20,8 @@
     "clean-webpack-plugin": "^4.0.0",
     "electron": "^19.0.0",
     "electron-is-dev": "^2.0.0",
+    "electron-reload": "^2.0.0-alpha.1",
+    "electron-reloader": "^1.2.3",
     "eslint": "^8.16.0",
     "eslint-plugin-react": "^7.30.0",
     "hoist-non-react-statics": "^3.3.2",
