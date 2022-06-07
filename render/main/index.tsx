@@ -14,10 +14,8 @@ const App = () => {
 	return (
 		<div>
 			<div>hello react</div>
-			{
-				localCode ? <div> 本身的控制码:  {localCode} </div> :
-					<button onClick={()=>login()}>登录</button>
-			}
+			<button onClick={()=>login()}>登录</button>
+			<div> 本身的控制码:  {localCode} </div>
 		</div>
 	);
 };
