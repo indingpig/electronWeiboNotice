@@ -42,7 +42,7 @@ module.exports = {
     "no-self-compare": 1,
     "no-sequences": 1,
     "no-throw-literal": 1,
-    "no-return-assign": [1, 'always'],
+    "no-return-assign": [0, 'always'],
     "no-redeclare": [
       1,
       {
