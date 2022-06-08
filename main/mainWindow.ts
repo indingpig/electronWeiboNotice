@@ -6,8 +6,9 @@ let win: BrowserWindow;
 
 export function create() {
     win = new BrowserWindow({
-        width: 600,
-        height: 600,
+        // width: 1000,
+        // height: 700,
+        fullscreen: true,
         webPreferences: {               // 网页功能设置
             nodeIntegration: true,       // 是否在node工作器中启用工作集成默认false
             contextIsolation: false
