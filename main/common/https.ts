@@ -10,7 +10,6 @@ import {net} from 'electron';
 // https://m.weibo.cn/api/container/getIndex?type=uid&value=1850988623&containerid=1076031850988623
 class ClientHttp {
   fetch(method: string, url: string) {  
-    console.log(url);
     return new Promise((resolve, rejects) => {
       const clientHttp = net.request({
         method,
@@ -27,6 +26,10 @@ class ClientHttp {
           } catch (error) {
             rejects(error);
           }
+        });
+
+        response.on('error', (error) => {
+          rejects(error);
         });
       });
 
