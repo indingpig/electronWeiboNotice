@@ -10,18 +10,12 @@ interface config extends httpCoing {
   
 }
 
-class RenderHttp {
-  async fecth(url: string, config: Object) {
-    return await ipcRenderer.invoke('Request',url, config);
-  }
-}
-
-class Request extends RenderHttp {
-  get(url: string, config: Object) {
-    return this.fecth(url, config);
+class Request {
+  async get(url: string, config: Object) {
+    return await ipcRenderer.invoke('RequestGet',url, config);
   }
 
-  post(url: string, config: Object) {
+  async post(url: string, config: Object) {
 
   }
 }

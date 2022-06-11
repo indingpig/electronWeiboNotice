@@ -1,4 +1,4 @@
-import { ipcMain, net } from 'electron';
+import { ipcMain, net, IpcMainInvokeEvent } from 'electron';
 import myFetch from './common/https';
 export function ipc() {
   ipcMain.handle('login', async () => {
@@ -6,20 +6,19 @@ export function ipc() {
     const code = Math.floor(Math.random() * (999999 - 100000)) + 100000;
     return code;
   });
-  ipcMain.handle('start', async (event, params) => {
-    console.log(event, params);
-    const res = getWeibo();
-    return res;
-  });
-  ipcMain.on('Request', (event, url: string, params: Object) => {
-    console.log(event, params);
-  });
+  // ipcMain.handle('start', async (event, params) => {
+  //   console.log(event, params);
+  //   const res = getWeibo();
+  //   return res;
+  // });
+  ipcMain.handle('RequestGet', RequestGetHandle);
 }
 
-function getWeibo():Promise<unknown> {
-  return myFetch.get('https://m.weibo.cn/api/container/getIndex', {
-    type: 'uid',
-    value: '5976999361',
-    containerid: '1076035976999361'
-  }).then(data => data).catch(err => err);
+async function RequestGetHandle(event: IpcMainInvokeEvent, url:string, params: Object):Promise<unknown> {
+  try {
+    const data = await myFetch.get(url, params);
+    return data;
+  } catch (err) {
+    return err;
+  }
 }
