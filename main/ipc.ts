@@ -11,14 +11,28 @@ export function ipc() {
   //   const res = getWeibo();
   //   return res;
   // });
-  ipcMain.handle('RequestGet', RequestGetHandle);
+  ipcMain.handle('MockLogin', MockLogin1);
+  ipcMain.handle('RequestGet', MockLogin1);
 }
 
 async function RequestGetHandle(event: IpcMainInvokeEvent, url:string, params: Object):Promise<unknown> {
+  debugger;
   try {
     const data = await myFetch.get(url, params);
     return data;
   } catch (err) {
     return err;
   }
+}
+
+function MockLogin1(event: IpcMainInvokeEvent, params:any) {
+  const userInfo = {
+    password: 'buyaotoukanwomima',
+    userName: 'sheldon'
+  };
+  const code = Math.floor(Math.random() * (999999 - 100000)) + 100000;
+  if (params.userName === userInfo.userName && params.password === userInfo.password) {
+    return code;
+  }
+  return false;
 }

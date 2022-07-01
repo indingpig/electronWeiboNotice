@@ -1,8 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, FormEvent } from 'react';
+import { ipcRenderer } from 'electron';
 import { Weibo, CardType } from './../../../interface';
 import {renderFetch as myFecth } from './../../utils/renderHttps';
-
 const Login = () => {
+  const [userInfo, setUserInfo] = useState({
+    userName: '',
+    password: ''
+  });
   const handleLogin = async ():Promise<void> => {
     // const [localCode, setLocalCode] = useState('');//本身的控制码
     let url = 'https://m.weibo.cn/api/container/getIndex';
@@ -17,12 +21,31 @@ const Login = () => {
       cardsFirst = data.cards[1];
       console.log(cardsFirst);
     }
+    // const res = await ipcRenderer.invoke('MockLogin', userInfo);
+    // console.log(res);
+  };
+  const handleInput = (event:FormEvent<HTMLInputElement>, key: 'userName' | 'password') =>  {
+    const value = (event.target as HTMLInputElement).value;
+    userInfo[key] = value;
+    setUserInfo(userInfo);
   };
   return (
     <div>
-      <button onClick={() => handleLogin()}>
-        登录
-      </button>
+      <section>
+        <form>
+          <label htmlFor="userNmae">
+            <input type="text" placeholder='user name'
+              name='userName' onInput={(event) => handleInput(event, 'userName')}/>
+          </label>
+          <label htmlFor="userPwd">
+            <input type="password" placeholder='password'
+             name='password' onInput={(event) => handleInput(event, 'password')}/>
+          </label>
+          <button type='button' onClick={() => handleLogin()}>
+            登录
+          </button>
+        </form>
+      </section>
     </div>
   );
 };
