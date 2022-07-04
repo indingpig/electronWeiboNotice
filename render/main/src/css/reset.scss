@@ -1,0 +1,25 @@
+body, ol, ul, h1, h2,
+h3,h4,h5, p, th, td, dl,
+dd, form, fieldset, legend,
+input, textarea, select {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+li {
+  list-style: none;
+}
+a, u, s, del {
+  text-decoration: none;
+  color: #000;
+}
+input, textarea {
+  outline: none;
+  border: 0;
+}
+
+img {
+  border: 0;
+  width: 100%;
+  vertical-align: middle;
+}
