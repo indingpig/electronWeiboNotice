@@ -11,12 +11,11 @@ export function ipc() {
   //   const res = getWeibo();
   //   return res;
   // });
-  ipcMain.handle('MockLogin', MockLogin1);
-  ipcMain.handle('RequestGet', MockLogin1);
+  ipcMain.handle('RequestGet', RequestGetHandle);
+  ipcMain.handle('MockLogin', MockLogin);
 }
 
 async function RequestGetHandle(event: IpcMainInvokeEvent, url:string, params: Object):Promise<unknown> {
-  debugger;
   try {
     const data = await myFetch.get(url, params);
     return data;
@@ -25,7 +24,7 @@ async function RequestGetHandle(event: IpcMainInvokeEvent, url:string, params: O
   }
 }
 
-function MockLogin1(event: IpcMainInvokeEvent, params:any) {
+function MockLogin(event: IpcMainInvokeEvent, params:any) {
   const userInfo = {
     password: 'buyaotoukanwomima',
     userName: 'sheldon'
