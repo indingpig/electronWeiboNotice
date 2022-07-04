@@ -13,7 +13,7 @@ module.exports = {
     // 引入的默认后缀名,一个个找
     extensions: [".ts", ".tsx", ".js", ".jsx", ".json"],
     alias: {
-      //   "@": path.resolve("src"), // 这样配置后 @ 可以指向 src 目录
+        // "@": path.resolve("src") // 这样配置后 @ 可以指向 src 目录
     }
   },
   module: {
@@ -21,6 +21,21 @@ module.exports = {
       {
         test: /\.tsx?$/,
         loader: "ts-loader",
+        exclude: /node_modules/
+      },
+      {
+        test: /\.scss?$/,
+        // loader: ["style-loader", "css-loader", "sass-loader"],
+        use: [
+          "style-loader",
+          'css-loader',
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: true
+            }
+          }
+        ],
         exclude: /node_modules/
       }
     ]
